@@ -5,7 +5,7 @@ if [[ -z $CACIP || -z $CACUSER ]]; then
   exit 1
 fi
 
-ssh root@$CACIP 'curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s $CACUSER'
+ssh root@$CACIP "curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s $CACUSER"
 
 CACPWD=$(cat /proc/sys/kernel/random/uuid)
 echo $CACPWD
