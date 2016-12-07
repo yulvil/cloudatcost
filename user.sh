@@ -21,7 +21,7 @@ echo "PasswordAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 sudo sed -i 's/^ChallengeResponseAuthentication/#ChallengeResponseAuthentication/' /etc/ssh/sshd_config
 echo "ChallengeResponseAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 
-sudo service ssh restart
+# sudo service ssh restart
 
 # Firewall
 sudo ufw enable
