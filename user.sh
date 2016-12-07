@@ -37,6 +37,9 @@ curl -s https://getcaddy.com | bash
 # Need to login again
 ulimit -n 8192
 
+# Grant access to ports < 1024
+sudo setcap 'cap_net_bind_service=+ep' $(which caddy)
+
 printf '
 ab.cd.com {
   gzip
