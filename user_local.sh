@@ -8,4 +8,4 @@ NEWPWD=$4
 ssh-keygen -t rsa -b 4096 -C "$SNAME $IP" -f "~/.ssh/id_rsa_$SNAME" -N ${NEWPWD}
 scp ~/.ssh/id_rsa_$SERVERNAME.pub ${UNAME}@${IP}:
 
-ssh -i ~/.ssh/id_rsa_$SERVERNAME ${UNAME}@${IP}
+ssh -t -t -i ~/.ssh/id_rsa_$SERVERNAME ${UNAME}@${IP}
