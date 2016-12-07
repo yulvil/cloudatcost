@@ -4,6 +4,11 @@ set -x
 
 NEWUSER=$1
 
+if [[ -z $NEWUSER ]]; then
+  echo Usage...
+  exit 1
+fi
+
 # remove default user
 deluser --remove-home user
 
