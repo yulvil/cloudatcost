@@ -1,0 +1,2 @@
+# cloudatcost
+cloudatcost setup scripts
