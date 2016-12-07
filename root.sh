@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 NEWUSER=$1
 
 deluser --remove-home user
