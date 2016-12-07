@@ -6,6 +6,7 @@ sudo  timedatectl set-timezone Etc/UTC
 
 # Disable root password
 sudo passwd -l root
+sudo passwd -l $USER
 
 # Disable ssh using root
 sudo sed -i 's/^PermitRootLogin/#PermitRootLogin/' /etc/ssh/sshd_config
@@ -39,6 +40,12 @@ ulimit -n 8192
 
 # Grant access to ports < 1024
 sudo setcap 'cap_net_bind_service=+ep' $(which caddy)
+
+# Display IP addresses
+hostname -I
+
+sudo mkdir /www/
+sudo chown $USER:$USER /www/
 
 printf '
 ab.cd.com {
