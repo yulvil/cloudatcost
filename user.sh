@@ -24,7 +24,7 @@ echo "ChallengeResponseAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 # sudo service ssh restart
 
 # Firewall
-sudo ufw enable
+sudo ufw --force enable
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw allow 22/tcp
