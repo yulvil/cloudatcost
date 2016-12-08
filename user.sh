@@ -21,8 +21,6 @@ echo "PasswordAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 sudo sed -i 's/^ChallengeResponseAuthentication/#ChallengeResponseAuthentication/' /etc/ssh/sshd_config
 echo "ChallengeResponseAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 
-# sudo service ssh restart
-
 # Firewall
 sudo ufw --force enable
 sudo ufw allow 80/tcp
@@ -52,3 +50,5 @@ ab.cd.com {
   gzip
   log access.log
 }' > Caddyfile
+
+sudo service ssh restart
