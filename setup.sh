@@ -7,7 +7,7 @@ fi
 
 ssh root@$CACIP "curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s \"$CACUSER\""
 
-CACPWD=$(cat /proc/sys/kernel/random/uuid)
+CACPWD=$(cat /proc/sys/kernel/random/uuid | tr -d '-')
 echo $CACPWD
 curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/user_local.sh | bash -s $CACIP $CACSUBDOMAIN $CACUSER $CACPWD
 
