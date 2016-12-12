@@ -21,6 +21,12 @@ echo "PasswordAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 sudo sed -i 's/^ChallengeResponseAuthentication/#ChallengeResponseAuthentication/' /etc/ssh/sshd_config
 echo "ChallengeResponseAuthentication no" | sudo tee -a /etc/ssh/sshd_config
 
+# Remove potentially duplicated host key.
+rm /etc/ssh/ssh_host_*
+# Regenerate host keys.
+/usr/sbin/dpkg-reconfigure openssh-server
+# printf "dsa\necdsa\ned25519\nrsa\n" | xargs -L1 -I{} ssh-keygen -t {} -N \"\" -f /etc/ssh/ssh_host_{}_key
+
 # Firewall
 sudo ufw --force enable
 sudo ufw allow 80/tcp
