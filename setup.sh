@@ -6,6 +6,7 @@ if [[ -z $CACIP || -z $CACUSER || -z $CACSUBDOMAIN ]]; then
 fi
 
 ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@$CACIP "curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s \"$CACUSER\""
+echo $?
 
 CACPWD=$(cat /proc/sys/kernel/random/uuid | tr -d '-')
 echo $CACPWD
