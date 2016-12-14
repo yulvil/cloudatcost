@@ -10,7 +10,7 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@$CACIP 
   apt-get update
   apt-get upgrade -y
   apt-get dist-upgrade -y
-  curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s \"$CACUSER\""
+  curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s \"$CACUSER\"'
 if [[ $? -ne 0 ]]; then
   exit $?
 fi
