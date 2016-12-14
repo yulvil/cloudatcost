@@ -5,7 +5,12 @@ if [[ -z $CACIP || -z $CACUSER || -z $CACSUBDOMAIN ]]; then
   exit 1
 fi
 
-ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@$CACIP "apt-get install -y curl; curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s \"$CACUSER\""
+ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@$CACIP '
+  wget -O /etc/apt/sources.list https://raw.githubusercontent.com/yulvil/cloudatcost/master/debian/sources.list
+  apt-get update
+  apt-get upgrade -y
+  apt-get dist-upgrade -y
+  curl -s https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh | bash -s \"$CACUSER\""
 if [[ $? -ne 0 ]]; then
   exit $?
 fi
