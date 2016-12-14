@@ -5,7 +5,7 @@ if [[ -z $CACIP || -z $CACUSER || -z $CACSUBDOMAIN ]]; then
   exit 1
 fi
 
-ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@$CACIP 'wget -O /dev/stdout https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh 2>/dev/null | bash -s $CACUSER'
+ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no root@$CACIP "wget -O /dev/stdout https://raw.githubusercontent.com/yulvil/cloudatcost/master/root.sh 2>/dev/null | bash -s $CACUSER"
 if [[ $? -ne 0 ]]; then
   exit $?
 fi
