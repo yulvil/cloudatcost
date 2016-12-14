@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH=$PATH:/sbin
+
 chmod 600 ~/.ssh/authorized_keys
 
 sudo  timedatectl set-timezone Etc/UTC
@@ -38,7 +40,9 @@ sudo ufw status
 # Increase hard ulimit
 echo "$USER hard nofile 9999" | sudo tee -a /etc/security/limits.conf
 
-curl -s https://getcaddy.com | bash
+if [[ ! -e /usr/local/bin/caddy ]]; then
+  curl -s https://getcaddy.com | bash
+fi
 
 # Need to login again
 ulimit -n 8192
@@ -49,7 +53,7 @@ sudo setcap 'cap_net_bind_service=+ep' $(which caddy)
 # Display IP addresses
 hostname -I
 
-sudo mkdir /www/
+sudo mkdir /www/ 2>/dev/null
 sudo chown $USER:$USER /www/
 
 printf '
