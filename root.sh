@@ -9,6 +9,14 @@ if [[ -z $NEWUSER ]]; then
   exit 1
 fi
 
+# Update the system
+wget -O /etc/apt/sources.list https://raw.githubusercontent.com/yulvil/cloudatcost/master/debian/sources.list
+apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
+apt-get install -y curl
+apt-get install -y sudo
+
 # remove default user
 deluser --remove-home user
 
